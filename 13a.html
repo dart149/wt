@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Date</title>
+</head>
+<body>
+    <button id="displaydate">Show Date</button>
+    <textarea rows="1" id="text"></textarea>
+    <script>
+        data={
+            "name":"vijay"
+        }
+        document.cookie=`name=${JSON.stringify(data)}`;
+        var btn = document.getElementById("displaydate");
+        btn.addEventListener("click", () => {
+            var ta = document.getElementById("text");
+            ta.value = new Date().toDateString(); // Displays the current date in UTC format
+        });
+    </script>
+</body>
+</html>

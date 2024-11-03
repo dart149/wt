@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store User Credentials in Cookie</title>
+</head>
+<body>
+  <h1>Store User Credentials in a Cookie</h1>
+  <button onclick="setUserCredentials()">Set Cookie</button>
+  <button onclick="getUserCredentials()">Get Cookie</button>
+
+  <script>
+    // User data to store in the cookie
+    const users = [
+      { id: "user1", password: "password1" },
+      { id: "user2", password: "password2" },
+      { id: "user3", password: "password3" },
+      { id: "user4", password: "password4" }
+    ];
+
+    // Function to set a cookie
+    function setUserCredentials() {
+      document.cookie=`usercredentials = ${JSON.stringify(users)};path=/;max-age=3600;secure`
+      alert("User credentials have been saved in the cookie.");
+    }
+
+    // Function to get the cookie value
+    function getUserCredentials() {
+      const cookieValue = document.cookie
+        console.log(cookieValue)
+    }
+  </script>
+</body>
+</html>
