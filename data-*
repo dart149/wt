@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        .product {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            display: inline-block;
+            width: 150px;
+        }
+        #productDetails {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Catalog</h1>
+
+    <!-- Product List with data-* attributes for additional information -->
+    <div class="product" data-name="Laptop" data-price="1500" data-description="A high-performance laptop with 16GB RAM and 512GB SSD.">
+        <h3>Laptop</h3>
+        <p>Click for details</p>
+    </div>
+    <div class="product" data-name="Smartphone" data-price="800" data-description="A smartphone with a 6.5-inch display and 128GB storage.">
+        <h3>Smartphone</h3>
+        <p>Click for details</p>
+    </div>
+    <div class="product" data-name="Headphones" data-price="200" data-description="Wireless headphones with noise cancellation.">
+        <h3>Headphones</h3>
+        <p>Click for details</p>
+    </div>
+
+    <!-- Area to display product details -->
+    <div id="productDetails">
+        <h2>Product Details</h2>
+        <p id="details"></p>
+    </div>
+
+    <script>
+        // Select all product elements
+        const products = document.querySelectorAll('.product');
+        const detailsDiv = document.getElementById('details');
+
+        // Add click event to each product to display its details
+        products.forEach(product => {
+            product.addEventListener('click', () => {
+                // Get data attributes from the clicked product
+                const name = product.getAttribute('data-name');
+                const price = product.getAttribute('data-price');
+                const description = product.getAttribute('data-description');
+
+                // Display product details dynamically
+                detailsDiv.innerHTML = `
+                    <strong>Name:</strong> ${name}<br>
+                    <strong>Price:</strong> $${price}<br>
+                    <strong>Description:</strong> ${description}
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
