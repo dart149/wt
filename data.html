@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Using data-* Attribute</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .item {
+            margin: 10px 0;
+            cursor: pointer;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Content Using `data-*` Attribute</h1>
+    <div id="content">
+        <div class="item" data-title="Item 1" data-description="This is the first item.">Item 1</div>
+        <div class="item" data-title="Item 2" data-description="This is the second item.">Item 2</div>
+        <div class="item" data-title="Item 3" data-description="This is the third item.">Item 3</div>
+    </div>
+    <div id="details" style="margin-top: 20px; font-size: 1.2em;"></div>
+
+    <script>
+        const items = document.querySelectorAll('.item');
+        const details = document.getElementById('details');
+        items.forEach(item=>{
+            item.addEventListener("click",()=>{
+                details.innerHTML=`<h1>${item.getAttribute("data-description")}</h1>`;
+            })
+            
+        })
+    </script>
+</body>
+</html>
