@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+</head>
+<body>
+    <h1>Set and Read Cookies</h1>
+    <button onclick="setUserCookie()">Set Cookie</button>
+    <button onclick="readUserCookie()">Read Cookie</button>
+    <div id="cookieDisplay" style="margin-top: 20px; font-family: Arial;"></div>
+
+    <script>
+        // Function to set a cookie
+        function setUserCookie() {
+            const users = [
+                { id: 'user1', password: 'password1' },
+                { id: 'user2', password: 'password2' },
+                { id: 'user3', password: 'password3' },
+                { id: 'user4', password: 'password4' }
+            ];
+
+            // Serialize the data and set as a cookie
+            const cookieValue = encodeURIComponent(JSON.stringify(users));
+            document.cookie = `userCredentials=${cookieValue}; path=/; max-age=3600`;
+
+            alert('Cookie has been set!');
+        }
+
+        // Function to read a cookie
+        function readUserCookie() {
+            const cookies = document.cookie.split('; ');
+            const cookieObj = {};
+
+            cookies.forEach(cookie => {
+                const [key, value] = cookie.split('=');
+                cookieObj[key] = decodeURIComponent(value);
+            });
+
+            if (cookieObj.userCredentials) {
+                const users = JSON.parse(cookieObj.userCredentials);
+                let display = '<h2>Stored User Credentials:</h2>';
+                users.forEach(user => {
+                    display += `<p>User ID: ${user.id}, Password: ${user.password}</p>`;
+                });
+                document.getElementById('cookieDisplay').innerHTML = display;
+            } else {
+                alert('No user credentials cookie found!');
+            }
+        }
+    </script>
+</body>
+</html>
